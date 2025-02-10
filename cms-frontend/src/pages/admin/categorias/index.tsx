@@ -97,7 +97,7 @@ const CategoriesAdmin = () => {
           >
             <span>{category.descricao}</span>
             <button
-              onClick={() => handleDeleteCategory(category.id)}
+              onClick={() => handleDeleteCategory(category?.id||'')}
               className="bg-red-500 text-white px-4 py-2 rounded-md"
               disabled={loading}
             >

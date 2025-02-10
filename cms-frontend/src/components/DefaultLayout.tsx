@@ -19,7 +19,7 @@ const DefaultLayout: React.FC<{posts: IPost[]}> = ({ posts }) => {
               >
                 <h3 className="text-xl font-bold mb-2 text-slate-950">{post.title}</h3>
                 <p className="text-gray-600 text-justify">
-                  <div dangerouslySetInnerHTML={{__html: post.content}} />
+                  <div dangerouslySetInnerHTML={{__html: post.content!}} />
                 </p>
               </div>
             ))}

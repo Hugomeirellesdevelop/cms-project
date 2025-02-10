@@ -8,12 +8,10 @@ const EditPostPage: React.FC = () => {
     const [post, setPost] = useState<IPost | null>({  title: '',
         content: '',
         categoriaId: undefined,
-        tipo: 'post',
-        image: undefined,});
+        tipo: 'post'});
     const [categorias, setCategorias] = useState<ICategoria[] | null>([])
     const router = useRouter();
     const { id } = router.query;
-    const [loading, setLoading] = useState(true);
 
     useEffect(()=>{
         const fetchPost = async () => {
@@ -25,15 +23,13 @@ const EditPostPage: React.FC = () => {
                 setPost(data);
                 // setPost({...post, updatedAt: new Date()})
                 console.log({post, urlPost});
-                setLoading(false);
             } catch (error) {
                 console.log('O seguinte erro ocorreu.', error);
-                setLoading(false)
             }
         }
 
         if(id) fetchPost();
-    }, [id]);
+    }, []);
 
     useEffect(()=>{
         const fetchCategorias = async() => {
@@ -45,13 +41,12 @@ const EditPostPage: React.FC = () => {
                 console.log({categorias, urlCategorias})
             } catch (error) {
                 console.log('O seguinte erro ocorreu.', error);
-                setLoading(false)
             }
         }
 
         fetchCategorias()
 
-    }, []);
+    });
 
     const handleSave = async () => {
         if (!post) return;
@@ -69,14 +64,6 @@ const EditPostPage: React.FC = () => {
             });
     
           if (response.ok) {
-            console.log({response, post, urlSavePost})
-            if(post?.image) 
-               if(!(await saveImage())) {
-                    alert('Arquivo não foi salvo!')
-                    return
-               }
-
-            
             alert('Post atualizado com sucesso!');
             router.push('/admin/posts');
           } else {
@@ -88,39 +75,17 @@ const EditPostPage: React.FC = () => {
         }
     };
 
-    const saveImage = async () => {
-        try {
-            console.log('saveImage', post)
-            const formData = new FormData()
-            if(post?.image)
-                formData.append('image', post?.image)
-
-            if(post?.id)
-                formData.append('id', post?.id);
-
-            // for (const pair of formData.entries()) {
-            //     console.log('formData:',pair[0], pair[1]); // Deve imprimir os dados corretamente
-            // }
-
-            const url = `${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.postUploadArquivo}`;
-            const response = await fetch(url, {
-                method: 'POST',
-                body: formData
-            })
-            
-            return response.ok
-    
-        } catch (error) {
-            console.log({error})
-            return false
-        }
-    }
    
     const handlerVoltar = () => {
         router.push('/admin/posts')
     } 
    
     const handlerImage = (event: ChangeEvent<HTMLInputElement>) => {
+        if (!event.target.files || event.target.files.length === 0) {
+            console.warn("Nenhum arquivo selecionado");
+            return;
+        }
+        
         const file = event.target.files[0];
         try {
             setPost((prevPost)=> ({

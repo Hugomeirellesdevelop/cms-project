@@ -1,6 +1,10 @@
-FROM ngrok/ngrok:latest
+FROM node:18
 
-# Substitua pelo seu token do ngrok
-ENV NGROK_AUTHTOKEN=1dQAizYHuKRs4rF6ho2M94CgIHG_2nZnRmH8hhHB9HwNkFwHt
+WORKDIR /cms-frontend
+COPY package*.json ./
+RUN npm install
+COPY . .
 
-ENTRYPOINT ["ngrok"]
+RUN npm run build
+
+CMD ["npm", "run", "start"]

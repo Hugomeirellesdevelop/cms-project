@@ -1,20 +1,11 @@
 import { configApp } from "@/config/config";
-import { ICategoria } from "@/models/definitions";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 const VerificaCategoriaDefault: React.FC = () =>{
-  const catIni: ICategoria = {
-    id: '', 
-    descricao: '', 
-    home: false, 
-    publicar: false, 
-    slug: ''
-  }
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
-  const [categoriaDefault, setcategoriaDefault] = useState(catIni)
-
+ 
   useEffect(()=>{
 
     const fetchCategoriaDefault = async() =>{
@@ -26,7 +17,6 @@ const VerificaCategoriaDefault: React.FC = () =>{
 
         console.log('data: ', {...data})
         
-        setcategoriaDefault(data)
         if(res.ok) {
           setIsLoading(false)
           console.log('url: ',`/categorias/${data['id']}`)
@@ -39,7 +29,7 @@ const VerificaCategoriaDefault: React.FC = () =>{
     }
 
     fetchCategoriaDefault()
-  },[])
+  })
 
 
   return(

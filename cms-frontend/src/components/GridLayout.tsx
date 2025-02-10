@@ -2,7 +2,6 @@ import { IPost } from '@/models/definitions';
 import React from 'react';
 
 const GridLayout: React.FC<{posts: IPost[]}> = ({ posts }) => {
-  const items = Array.from({ length: 8 }, (_, i) => `Item ${i + 1}`);
 
   return (
     <div className="p-6">
@@ -16,7 +15,7 @@ const GridLayout: React.FC<{posts: IPost[]}> = ({ posts }) => {
             <h1 className="text-2xl md:text-2xl font-extrabold mb-4">{post.title}</h1>
             <div 
                 className="text-lg md:text-xl mb-8" 
-                dangerouslySetInnerHTML={{__html: post.content}}>
+                dangerouslySetInnerHTML={{__html: post.content!}}>
             </div>
           </div>
         ))}

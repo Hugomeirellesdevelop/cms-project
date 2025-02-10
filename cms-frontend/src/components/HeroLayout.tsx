@@ -1,5 +1,6 @@
 import { configApp } from '@/config/config';
 import { IPost } from '@/models/definitions';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -9,13 +10,17 @@ const HeroLayout: React.FC<{posts: IPost[]}> = ({posts}) => {
     <div>
       {
         posts.map((post)=>(
-          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-center rounded-md gap-x-4">
-            <div key={post.id} className='flex flex-col md:flex-row items-center md:items-start gap-8 mb-12 md:h-full'>
+          <div key={post.id} className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-center rounded-md gap-x-4">
+            <div  className='flex flex-col md:flex-row items-center md:items-start gap-8 mb-12 md:h-full'>
                 <div className="w-full md:w-1/3 flex">
-                  <img 
+                  <Image
                   src={`${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.postGetImage}/${post.id}`} 
                   alt="Imagem do Post" 
                   className="w-full h-full object-cover rounded-lg shadow-lg"
+                  width={300}
+                  height={500}
+                  quality={100}
+                  priority
                   />
                 </div>
 

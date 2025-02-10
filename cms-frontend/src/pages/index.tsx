@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link";
 
 
 
@@ -25,9 +26,9 @@ export default function Home() {
         </span>
         <div className="bg-cyan-200 w-40 p-5 rounded-md hover:underline">
           <strong className="text-black font-bold">
-            <a href="/categorias" className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+            <Link href="/categorias" className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
               Saiba mais...
-            </a>
+            </Link>
           </strong>
 
         </div>
