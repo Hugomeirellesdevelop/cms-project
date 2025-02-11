@@ -1,3 +1,4 @@
+/** 
 import { MigrationInterface, QueryRunner } from "typeorm";
 
 export class SeedInitialData1738969812566 implements MigrationInterface {
@@ -86,3 +87,4 @@ export class SeedInitialData1738969812566 implements MigrationInterface {
     }
 
 }
+**/
