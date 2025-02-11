@@ -24,9 +24,6 @@ import { configSys } from './config/parametros-de-sistema';
       synchronize: true,
       autoLoadEntities: true,
       migrations: ["src/config/migrations/*.ts"],
-      ssl: {
-        rejectUnauthorized: false
-      },
       entities: [
           UnidadeDeNegocio,
           Categoria,
