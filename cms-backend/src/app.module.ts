@@ -20,7 +20,7 @@ import { configSys } from './config/parametros-de-sistema';
       port: 5432,
       username: configSys.db.username || 'postgres',
       password: configSys.db.password || '!123@123#123',
-      database: configSys.db.database || 'cms-db',
+      database: configSys.db.database || 'cms_db',
       synchronize: true,
       autoLoadEntities: true,
       migrations: ["src/config/migrations/*.ts"],
