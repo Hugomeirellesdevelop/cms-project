@@ -1,11 +1,11 @@
 export const configApp = {
     app: {
-        urlBase: 'http://192.168.0.200',
-        port: '3000'
+        urlBase: process.env.NEXT_PUBLIC_API_URL,
+        port: process.env.NEXT_PUBLIC_API_PORT
     },
     api: {
-        urlBase: 'http://192.168.0.200',
-        port: '3001'//'https://a998-186-209-185-30.ngrok-free.app'
+        urlBase: process.env.NEXT_PUBLIC_API_URL,
+        port: process.env.NEXT_PUBLIC_API_PORT
     },
     routes: {
         categorias: '/categorias',
