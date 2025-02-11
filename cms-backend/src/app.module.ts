@@ -16,7 +16,11 @@ import { configSys } from './config/parametros-de-sistema';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: configSys.db.url,
+      host: configSys.db.host,
+      port: 5432,
+      username: configSys.db.username,
+      password: configSys.db.password,
+      database: configSys.db.database,
       synchronize: true,
       autoLoadEntities: true,
       migrations: ["src/config/migrations/*.ts"],
@@ -29,11 +33,6 @@ import { configSys } from './config/parametros-de-sistema';
           User,
           Post
       ],
-      // host: configSys.db.host,
-      // port: 5432,
-      // username: 'postgres',
-      // password: '!123@123#123',
-      // database: 'cms_db',
     }),
     UserModule,
     UnidadeDenegocioModule,
