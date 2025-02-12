@@ -22,7 +22,9 @@ const PostsAdmin = () => {
   useEffect(() => {
     const urlCat = `${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.categorias}`
     const fetchData = async () => {
-      const postsRes = await fetch(`${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.posts}`);
+      const urlPost = `${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.posts}`
+      console.log({urlPost})
+      const postsRes = await fetch(urlPost);
       const categoriesRes = await fetch(urlCat);
       const postsData = await postsRes.json();
       const categoriesData = await categoriesRes.json();
