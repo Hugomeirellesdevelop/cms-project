@@ -4,8 +4,8 @@ export const configApp = {
     //     port:  '3000'
     // },
     api: {
-        urlBase:  '82.29.60.183',
-        port: '3001'
+        urlBase:  '',
+        port: ''
     },
     routes: {
         categorias: '/categorias',
