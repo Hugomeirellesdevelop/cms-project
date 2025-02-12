@@ -1,8 +1,8 @@
 export const configApp = {
-    app: {
-        urlBase: '82.29.60.183',
-        port:  '3000'
-    },
+    // app: {
+    //     urlBase: '82.29.60.183',
+    //     port:  '3000'
+    // },
     api: {
         urlBase:  '82.29.60.183',
         port: '3001'
