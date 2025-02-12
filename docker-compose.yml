@@ -32,6 +32,8 @@ services:
     command: npm run start:dev
 
   frontend:
+    environment:
+      - NEXT_PUBLIC_API_URL=http://82.29.60.183:3001
     build: 
       context: ./cms-frontend
       dockerfile: docker/Dockerfile

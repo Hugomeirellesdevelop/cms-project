@@ -9,7 +9,7 @@ const VerificaCategoriaDefault: React.FC = () =>{
   useEffect(()=>{
 
     const fetchCategoriaDefault = async() =>{
-      const urlCatDefault = `${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.categoriaDefault}`
+      const urlCatDefault = `${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.categoriaDefault}`
       console.log('urlCatDefault', urlCatDefault)
       try {
         const res = await fetch(urlCatDefault)

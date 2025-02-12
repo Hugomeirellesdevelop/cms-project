@@ -14,7 +14,7 @@ const HeroLayout: React.FC<{posts: IPost[]}> = ({posts}) => {
             <div  className='flex flex-col md:flex-row items-center md:items-start gap-8 mb-12 md:h-full'>
                 <div className="w-full md:w-1/3 flex">
                   <Image
-                  src={`${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.postGetImage}/${post.id}`} 
+                  src={`${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.postGetImage}/${post.id}`} 
                   alt="Imagem do Post" 
                   className="w-full h-full object-cover rounded-lg shadow-lg"
                   width={300}

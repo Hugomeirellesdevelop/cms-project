@@ -20,9 +20,9 @@ const PostsAdmin = () => {
 
   // Carregar posts e categorias do backend
   useEffect(() => {
-    const urlCat = `${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.categorias}`
+    const urlCat = `${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.categorias}`
     const fetchData = async () => {
-      const urlPost = `${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.posts}`
+      const urlPost = `${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.posts}`
       console.log({urlPost})
       const postsRes = await fetch(urlPost);
       const categoriesRes = await fetch(urlCat);
@@ -46,7 +46,7 @@ const PostsAdmin = () => {
 
     setLoading(true);
     try {
-      const res = await fetch(`${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.posts}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.posts}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newPost),
@@ -73,7 +73,7 @@ const PostsAdmin = () => {
 
     setLoading(true);
     try {
-      const res = await fetch(`${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.posts}/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.posts}/${id}`, {
         method: 'DELETE',
       });
 

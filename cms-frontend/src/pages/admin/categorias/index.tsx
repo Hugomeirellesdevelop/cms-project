@@ -12,7 +12,7 @@ const CategoriesAdmin = () => {
   // Carregar categorias do backend
   useEffect(() => {
     const fetchCategories = async () => {
-      const res = await fetch(`${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.categorias}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.categorias}`);
       const data = await res.json();
       setCategories(data);
     };
@@ -26,7 +26,7 @@ const CategoriesAdmin = () => {
 
     setLoading(true);
     try {
-      const res = await fetch(`${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.categorias}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.categorias}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newCategoryName }),
@@ -53,7 +53,7 @@ const CategoriesAdmin = () => {
 
     setLoading(true);
     try {
-      const res = await fetch(`${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.categorias}/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.categorias}/${id}`, {
         method: 'DELETE',
       });
 

@@ -24,10 +24,10 @@ const CategoriaPage: React.FC = () => {
 
     const fetchPosts = async () => {
       try {
-        const urlCategorias = `${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.categorias}/${slug}`
+        const urlCategorias = `${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.categorias}/${slug}`
         console.log('url: ', urlCategorias)
         
-        const res = await fetch(`${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.postsPorCategoria}/${slug}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.postsPorCategoria}/${slug}`);
         const data = await res.json();
         setPosts(data);
         const resCat = await fetch(urlCategorias);

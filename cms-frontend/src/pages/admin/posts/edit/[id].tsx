@@ -16,7 +16,7 @@ const EditPostPage: React.FC = () => {
     useEffect(()=>{
         const fetchPost = async () => {
             try {
-                const urlPost = `${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.posts}/${id}`;
+                const urlPost = `${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.posts}/${id}`;
                 const response = await fetch(urlPost);
                 const data = await response.json();
                 console.log(data)
@@ -34,7 +34,7 @@ const EditPostPage: React.FC = () => {
     useEffect(()=>{
         const fetchCategorias = async() => {
             try {
-                const urlCategorias = `${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.categorias}`;
+                const urlCategorias = `${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.categorias}`;
                 const responseCategoria = await fetch(urlCategorias);
                 const dataCategorias = await responseCategoria.json();
                 setCategorias(dataCategorias)
@@ -54,7 +54,7 @@ const EditPostPage: React.FC = () => {
         try {
             setPost({...post, updatedAt: new Date()})
             console.log({post})
-            const urlSavePost = `${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.posts}/${id}`
+            const urlSavePost = `${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.posts}/${id}`
             const response = await fetch(urlSavePost, {
                 method: 'PATCH',
                 headers: {

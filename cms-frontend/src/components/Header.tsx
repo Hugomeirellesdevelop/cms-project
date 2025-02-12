@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch(`${configApp.api.urlBase}:${configApp.api.port}${configApp.routes.categorias}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${configApp.routes.categorias}`);
         const data = await res.json();
         setCategories(data);
       } catch (error) {
